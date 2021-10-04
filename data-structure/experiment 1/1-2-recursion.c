@@ -32,7 +32,7 @@ int f(int x) {
     else if (x == k-1)
         return 1;
     else {
-        for (int i = x-1; i >= 0; i--) {
+        for (int i = x-1; i >= x-k; i--) {
             tmp += f(i);
         }
         return tmp;
