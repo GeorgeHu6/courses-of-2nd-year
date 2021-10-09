@@ -6,4 +6,8 @@ back up the files of courses which need Code to be submitted.
 
 - [x] experiment 1
 
+- [x] experiment 2
+
 ## numberical calculation
+
+- [ ] experiment 1 (screenshot completed)
