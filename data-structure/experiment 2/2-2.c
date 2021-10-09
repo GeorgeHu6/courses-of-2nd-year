@@ -8,10 +8,10 @@ typedef struct {
     double total, average;
 } Stu;
 
-void displayStudents(Stu *, int); 
-int readinStudents(Stu **, int, int); 
+void displayStudents(Stu *, int);
+int readinStudents(Stu **, int, int);
 int cmp(const void *, const void *);
-int deleteStudents(Stu **, int); 
+int deleteStudents(Stu **, int);
 
 int main() {
     Stu *students;
@@ -104,7 +104,7 @@ int deleteStudents(Stu **students, int origin_num) {
         printf("id Not Found!\n");
     else {
         for (int i = mid; i < new_num-1; i++)
-            students[i] = students[i+1];
+            (*students)[i] = (*students)[i+1];
         new_num--;
         *students = (Stu *) realloc(*students, (new_num+1)*sizeof(Stu));
     }
