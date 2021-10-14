@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 //使用结构体来存储每个学生的学号及成绩信息
-struct Stu{
+struct Stu {
     long long id;
     double chinese, math, english;
     double total, average;
@@ -11,9 +11,12 @@ struct Stu{
 typedef struct Stu *StuList;
 typedef struct Stu Stu;
 
-StuList insert(StuList, Stu *);
+void insert(StuList, Stu *);
+
 void createList(StuList);
+
 void apply2All(StuList, void (*)(Stu));
+
 void display(Stu stu);
 
 int main() {
@@ -23,7 +26,8 @@ int main() {
     int n;
     Stu *tmp;
 
-    //创建一个用于存储Stu的链表
+    //创建一个用于存储Stu的链表并初始化
+    studentsList = (StuList) malloc(sizeof(Stu));
     createList(studentsList);
 
 
@@ -41,9 +45,9 @@ int main() {
         tmp->math = math;
         tmp->english = eng;
         tmp->total = chi + math + eng;
-        tmp->average = 0.3*chi + 0.5*math + 0.2*eng;
+        tmp->average = 0.3 * chi + 0.5 * math + 0.2 * eng;
         //每次读入之后就往链表中插入
-        studentsList = insert(studentsList, tmp);
+        insert(studentsList, tmp);
     }
 
     //输出表头
@@ -54,11 +58,11 @@ int main() {
 }
 
 //头插法把结点插入链表
-StuList insert(StuList head, Stu *new_student) {
+void insert(StuList head, Stu *new_student) {
     StuList new_head;
+    new_head = (StuList) malloc(sizeof(Stu));
     new_student->next = head->next;
-    new_head->next = new_student;
-    return new_head;
+    head->next = new_student;
 }
 
 //初始化链表
@@ -69,14 +73,17 @@ void createList(StuList head) {
     head->total = head->average = -1;
 }
 
+//对Stu链表中的每个元素应用func函数
 void apply2All(StuList head, void (*func)(Stu item)) {
-    Stu *cur=head;
+    Stu *cur = head;
     while (cur->next != NULL) {
         cur = cur->next;
         (*func)(*cur);
     }
 }
 
+//规范格式化输出
 void display(Stu stu) {
-    printf("%12lld|%11.2f|%8.2f|%11.2f|%9.2f|%7.2f|\n", stu.id, stu.chinese, stu.math, stu.english, stu.total, stu.average);
+    printf("%12lld|%11.2f|%8.2f|%11.2f|%9.2f|%7.2f|\n", stu.id, stu.chinese, stu.math, stu.english, stu.total,
+           stu.average);
 }
