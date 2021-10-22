@@ -52,9 +52,12 @@ int main() {
     printf("-----id-----|--Chinese--|--Math--|--English--|--Total--|--Avg--|\n");
     apply2All(studentsList, display);
 
+    system("pause");
+
     return 0;
 }
 
+//封装了往以head为头结点的列表中读入n个Stu结点的功能
 void readinStudents(StuList head, int n) {
     long long num;
     double chi, math, eng;
@@ -79,8 +82,6 @@ void readinStudents(StuList head, int n) {
 
 //头插法把结点插入链表
 void insert(StuList head, Stu *new_student) {
-    StuList new_head;
-    new_head = (StuList) malloc(sizeof(Stu));
     new_student->next = head->next;
     head->next = new_student;
 }
@@ -144,6 +145,7 @@ void sortByTotal(StuList head) {
     }
 }
 
+//返回一个指向与*source一模一样的Stu深拷贝的指针
 Stu *getCopy(Stu *source) {
     Stu *res;
 
