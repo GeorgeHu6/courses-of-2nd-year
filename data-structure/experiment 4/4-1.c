@@ -14,6 +14,7 @@ typedef struct Lnode {
 Status OrderInsert(Link, Lnode *, int (*)(Lnode, Lnode));
 Status OrderInput(Link head, int (*)(Lnode, Lnode));
 Status OrderMerge(Link, Link, Link, int (*)(Lnode, Lnode));
+Status OrderSort(Link head, int (*)(Lnode, Lnode));
 
 Lnode *createNode(int);
 Lnode *deepCpy(const Lnode *);
@@ -24,37 +25,26 @@ int main() {
     Link linkList1, linkList2;
     Link mergeList;
     Lnode *tmp;
-    linkList1 = (Link) malloc(sizeof(Lnode));
-    linkList2 = (Link) malloc(sizeof(Lnode));
-    mergeList = (Link) malloc(sizeof(Lnode));
-    linkList1->next = linkList2->next = mergeList->next = NULL;
-    linkList1->data = linkList2->data = mergeList->data = -1;
 
-    tmp = createNode(5);
-    linkList1->next = tmp;
-    tmp = createNode(1);
-    linkList1->next->next = tmp;
-    tmp = createNode(4);
-    linkList1->next->next->next = tmp;
-    tmp = createNode(5);
-    linkList1->next->next->next->next = tmp;
+    linkList1 = createNode(-1);
+    linkList2 = createNode(-1);
+    mergeList = createNode(-1);
+    printf("Create linkList1\n");
     OrderInput(linkList1, byAscending);
-    displayLink(linkList1);
+    printf("Create linkList2\n");
+    OrderInput(linkList2, byAscending);
 
-    tmp = createNode(5);
-    OrderInsert(linkList2, tmp, byAscending);
-    tmp = createNode(3);
-    OrderInsert(linkList2, tmp, byAscending);
-    tmp = createNode(2);
-    OrderInsert(linkList2, tmp, byAscending);
-    tmp = createNode(3);
-    OrderInsert(linkList2, tmp, byAscending);
+    printf("linkList1: ");
+    displayLink(linkList1);
+    printf("linkList2: ");
     displayLink(linkList2);
 
     OrderMerge(linkList1, linkList2, mergeList, byAscending);
+    printf("merged linklist1&2: ");
     displayLink(mergeList);
-    displayLink(linkList1);
-    displayLink(linkList2);
+
+    printf("\n");
+    system("pause");
 
     return 0;
 }
@@ -85,8 +75,24 @@ Status OrderInsert(Link head, Lnode *new_node, int (*compare)(Lnode a, Lnode b))
     return OK;
 }
 
+Status OrderInput(Link head, int (*compare)(Lnode, Lnode)) {
+    int n, tmp_data;
+    Lnode *tmp;
+    printf("Input the number of nodes to add:\n");
+    scanf("%d", &n);
+    printf("Input integer data to save in each node\n");
+    printf("(each number ends with 'Enter' key or input in one line separating with space):\n");
+    while (n--) {
+        scanf("%d", &tmp_data);
+        if ((tmp = createNode(tmp_data)) == ERROR)
+            return ERROR;
+        OrderInsert(head, tmp, compare);
+    }
+    return OK;
+}
+
 //若compare的返回值不为0，认为a应该在b的前面
-Status OrderInput(Link head, int (*compare)(Lnode a, Lnode b)) {
+Status OrderSort(Link head, int (*compare)(Lnode a, Lnode b)) {
     //需要调整的链表是空的，直接返回ERROR
     if (head->next == NULL)
         return ERROR;

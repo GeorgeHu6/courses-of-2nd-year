@@ -18,13 +18,11 @@ typedef struct Lnode {
 Status OrderInsert(Link, Lnode *, int (*)(Lnode, Lnode));
 Status createPoly(Link head, int num, ...);
 Status addPloy(Link, Link, Link, int (*)(Lnode, Lnode));
-void displayPoly(Link);
 
 Lnode *createNode(int, int);
 Lnode *deepCpy(const Lnode *);
-
 int byAscending(Lnode, Lnode);
-
+void displayPoly(Link);
 
 int main() {
     Link poly1, poly2, poly3;
@@ -33,7 +31,7 @@ int main() {
     poly2 = createNode(-1, -1);
     poly3 = createNode(-1, -1);
     createPoly(poly1, 2, 1, 2, 5, 6);
-    createPoly(poly2, 3, -2, 2, 5, 6, 1, 1);
+    createPoly(poly2, 3, 1, 2, 1, 1, 1, 3);
     printf(" ");
     displayPoly(poly1);
     printf("+");
@@ -43,6 +41,8 @@ int main() {
     addPloy(poly1, poly2, poly3, byAscending);
     displayPoly(poly3);
 
+    printf("\n");
+    system("pause");
     return 0;
 }
 
@@ -71,7 +71,6 @@ Status createPoly(Link head, int num, ...) {
 
 //将polyA与polyB两个多项式相加的结果存在polyC中
 //polyA、polyB不能为空，polyC必须为空
-//polyA
 //若compare的返回值不为0，认为a应该在b的前面
 Status addPloy(Link polyA, Link polyB, Link polyC, int (*compare)(Lnode a, Lnode b)) {
     if (polyA->next == NULL || polyB->next == NULL || polyC->next != NULL)
@@ -91,7 +90,7 @@ Status addPloy(Link polyA, Link polyB, Link polyC, int (*compare)(Lnode a, Lnode
             pA = pA->next;
             rear->next = NULL;
         }
-            //pA与pB次数相等，相加后加入polyC
+        //pA与pB次数相等，相加后加入polyC
         else if (pA->frequency == pB->frequency) {
             tmp = createNode(pA->coefficient + pB->coefficient, pA->frequency);
             rear->next = tmp;
@@ -100,7 +99,7 @@ Status addPloy(Link polyA, Link polyB, Link polyC, int (*compare)(Lnode a, Lnode
             pB = pB->next;
             rear->next = NULL;
         }
-            //pB必处于较前位置，说明polyA中没有对应项，直接加入polyC中
+        //pB必处于较前位置，说明polyA中没有对应项，直接加入polyC中
         else {
             tmp = deepCpy(pB);
             rear->next = tmp;
@@ -206,10 +205,10 @@ void displayPoly(Link head) {
             printf("x");
         } else if (tmpFre == 1 && tmpCoe == -1) {
             printf("-x");
+        } else if (tmpCoe == 1) {
+            printf("+x^%d", tmpFre);
         } else if (tmpCoe > 0) {
             printf("+%dx^%d", tmpCoe, tmpFre);
-        } else if (tmpCoe == 1) {
-            printf("x^%d", tmpFre);
         } else if (tmpCoe == -1) {
             printf("-x^%d", tmpFre);
         } else {

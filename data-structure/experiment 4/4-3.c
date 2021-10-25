@@ -31,6 +31,8 @@ int main() {
 
     solve(linklist, k);
 
+    printf("\n");
+    system("pause");
     return 0;
 }
 
@@ -59,6 +61,8 @@ Status solve(Link head, int k) {
     }
     printf("%d", cur->data);
     free(cur);
+
+    return OK;
 }
 
 Status createLoopLink (Link head, int n) {
