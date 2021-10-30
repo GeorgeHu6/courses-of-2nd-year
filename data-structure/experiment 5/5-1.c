@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #define Status int
 #define OK 1
@@ -22,23 +23,26 @@ int main() {
     SqStack t;
     SElemType *num;
     num = (SElemType *) malloc(sizeof(SElemType));
-    InitStack(&t);
-    Push(&t, 'a');
-    Push(&t, 'b');
-    Push(&t, 'd');
-    Push(&t, 'e');
-    Push(&t, '0');
-    Pop(&t, num);
-    printf("%c\n", *num);
-    Pop(&t, num);
-    printf("%c\n", *num);
-    Pop(&t, num);
-    printf("%c\n", *num);
-    Pop(&t, num);
-    printf("%c\n", *num);
-    Pop(&t, num);
-    printf("%c\n", *num);
+    char ch;
 
+    InitStack(&t);
+
+    printf("input some chars separate with space or enter(ending with #)\n");
+    //以“#”作为输入的结尾，以此判断输入结束
+    while (1) {
+        scanf("%c", &ch);
+        if (ch == '#')
+            break;
+        if (isspace(ch))
+            continue;
+        Push(&t, ch);
+    }
+
+    while (Pop(&t, num) == OK)
+        printf("%c ", *num);
+    printf("\n");
+
+    system("pause");
     return 0;
 }
 
@@ -58,6 +62,7 @@ Status Push(SqStack *S, SElemType e) {
         S->base = realloc(S->base, sizeof(SElemType) * (S->stacksize + STACKINCREMENT));
         if (S->base == NULL)
             return ERROR;
+        S->stacksize += STACKINCREMENT;
     }
     *(S->top) = e;
     S->top++;

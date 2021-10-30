@@ -16,29 +16,29 @@ typedef struct Node {
 } SqStack;
 
 Status InitStack(SqStack *);
-
 Status Push(SqStack *, SElemType);
-
 Status Pop(SqStack *, SElemType *);
+Status Empty(SqStack);
 
 Status leftJudge(char);
 Status rightJudge(char);
 Status match(char, char);
 
-Status Empty(SqStack);
-
 int main() {
     SqStack t;
     SElemType *tmpElem;
-    char inputString[500];
+    char inputString[500] = {'\0',};
     int p = 0;
-    memset(inputString, '\0', 500);
+
     tmpElem = (SElemType *) malloc(sizeof(SElemType));
     *tmpElem = '\0';
     InitStack(&t);
+
+    printf("input an expression:\n");
+    //读取一整行输入
     gets(inputString);
 
-    while (inputString[p] != '\0') {
+    while (p < 500 && inputString[p] != '\0') {
         //由于只需要知道括号是否匹配，只要对括号进行处理即可
         //处理的是左括号，直接入栈
         if (leftJudge(inputString[p])) {
@@ -46,10 +46,15 @@ int main() {
             p++;
         } else if (rightJudge(inputString[p])) {
             //处理的是右括号，先把栈顶取出以进行匹配
-            Pop(&t, tmpElem);
+            //栈空，当前右括号没有东西可以匹配了
+            if (Pop(&t, tmpElem) != OK) {
+                printf("Fail to match all brackets.\n");
+                system("pause");
+                return 0;
+            }
             //若不匹配，输出错误信息直接退出程序
             if (!match(*tmpElem, inputString[p])) {
-                printf("Fail to match all brackets.");
+                printf("Fail to match all brackets.\n");
                 system("pause");
                 return 0;
             } else {
@@ -64,6 +69,7 @@ int main() {
     }
 
     //栈为空，说明括号全部匹配完成
+    //栈不为空，说明有括号没有匹配上
     if (Empty(t))
         printf("All brackets matched.\n");
     else
@@ -73,14 +79,17 @@ int main() {
     return 0;
 }
 
+//判断是否为左括号
 Status leftJudge(char ch) {
     return ch == '(' || ch == '[' || ch == '{';
 }
 
+//判断是否为右括号
 Status rightJudge(char ch) {
     return ch == ')' || ch == ']' || ch == '}';
 }
 
+//判断ch1与ch2是否为匹配的括号
 Status match(char ch1, char ch2) {
     return (ch1 == '(' && ch2 == ')') ||
            (ch1 == '[' && ch2 == ']') ||

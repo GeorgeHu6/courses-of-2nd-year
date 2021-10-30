@@ -24,12 +24,10 @@ Status initCharStack(charStack *);
 Status pushCharStack(charStack *, char);
 Status popCharStack(charStack *, char *);
 char frontCharStack(charStack);
-Status emptyCharStack(charStack);
 
 Status initIntStack(intStack *);
 Status pushIntStack(intStack *, int);
 Status popIntStack(intStack *, int *);
-Status emptyIntStack(intStack);
 
 char compareOp(char, char);
 Status isNum(char);
@@ -52,8 +50,9 @@ int main() {
     initCharStack(&opEr);
     initIntStack(&opNum);
 
+    printf("input an expression:\n");
     gets(inputString);
-    //#作为垫底和结尾元素
+    //#作为垫底和结尾元素,即作为开始符和结束符
     pushCharStack(&opEr, '#');
     inputString[strlen(inputString)] = '#';
 
@@ -95,7 +94,7 @@ int main() {
     }
 
     popIntStack(&opNum, &num1);
-    printf("%d\n", num1);
+    printf("= %d\n", num1);
 
     system("pause");
     return 0;
@@ -226,6 +225,8 @@ Status popCharStack(charStack *S, char *e) {
 }
 
 char frontCharStack(charStack S) {
+    if (S.base == S.top)
+        return '\0';
     return *(S.top - 1);
 }
 
@@ -235,12 +236,4 @@ Status popIntStack(intStack *S, int *e) {
         return ERROR;
     *e = *(--S->top);
     return OK;
-}
-
-Status emptyCharStack(charStack S) {
-    return S.base == S.top ? OK : ERROR;
-}
-
-Status emptyIntStack(intStack S) {
-    return S.base == S.top ? OK : ERROR;
 }
