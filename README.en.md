@@ -8,6 +8,20 @@ back up the files of courses which need Code to be submitted.
 
 - [x] experiment 2
 
+- [x] experiment 3
+
+- [x] experiment 4
+
+- [x] experiment 5
+
+- [x] experiment 6
+
+- [x] exercise 1
+
 ## numberical calculation
 
-- [ ] experiment 1 (screenshot completed)
+- [x] chapter 1 (experiment 1&2)
+
+- [x] chapter 2 (experiment 3&4)
+
+- [ ] chapter 3 (experiment 5&6)(report of experiment 6 not yet complete)
