@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+#define CQLEN 20     //定义循环队列最大长度
+
+typedef char DATA;      //定义数据元素类型
+
+typedef struct CBT      // 定义二叉树结点类型
+{
+  DATA data;           //结点数据
+  struct CBT *left;   //左子树指针
+  struct CBT *right;  //右子树指针
+}CBTType;
+
+/*二叉树基本操作——初始化二叉树、查找结点、添加结点、获取左子树、获取右子树、判断空树、计算二叉树深度、清空二叉树、显示结点数据、遍历二叉树(按层、先序、中序、后序)*/
+
+
+CBTType *InitTree();
+CBTType *TreeFindNode(CBTType *treeNode,DATA data);
+void AddTreeNode(CBTType *treeNode);
+CBTType *TreeFindNode(CBTType *treeNode,DATA data);
+CBTType *TreeLeftNode(CBTType *treeNode);
+CBTType *TreeRightNode(CBTType *treeNode);
+int TreeIsEmpty(CBTType *treeNode);
+int TreeDepth(CBTType *treeNode);
+void ClearTree(CBTType *treeNode);
+void TreeNodeData(CBTType *p);
+
+void LevelTree(CBTType *treeNode,void(*TreeNodeData)(CBTType *p));
+void DLRTree(CBTType *treeNode,void(*TreeNodeData)(CBTType *p));
+void LDRTree(CBTType *treeNode,void(*TreeNodeData)(CBTType *p));
+void LRDTree(CBTType *treeNode,void(*TreeNodeData)(CBTType *p));
+
+
+void main()
+{
+    CBTType *root=NULL;                //定义root为指向根结点的指针
+    char menusel;
+    void(*Visit)();                    //指向函数的指针
+    Visit=TreeNodeData;                //指向具体函数
+
+    root=InitTree();                   //初始化二叉树
+
+    //添加结点
+    do
+    {
+        printf("请选择菜单添加二叉树结点\n");
+        printf("0.退出\t");
+        printf("1.添加结点\n");
+        menusel=getch();
+        switch(menusel)
+        {
+            case '1':
+                     AddTreeNode(root);
+                     break;
+            case '0':
+                     break;
+            default:
+                     ;
+        }
+    }
+    while(menusel!='0');
+
+    //遍历二叉树
+    do
+    {
+        printf("请选择菜单遍历二叉树，输入0退出\n");
+        printf("1.DLR先序遍历\n");
+        printf("2.LDR中序遍历\n");
+        printf("3.LRD后序遍历\n");
+        printf("4.按层遍历\n");
+        menusel=getch();
+        switch(menusel)
+        {
+            case '0':
+                    break;
+            case '1':
+                    printf("\n先序遍历二叉树结果为：");
+                    DLRTree(root,Visit);
+                    printf("\n");
+                    break;
+            case '2':
+                    printf("\n后序遍历二叉树结果为：");
+                    LDRTree(root,Visit);
+                    printf("\n");
+                    break;
+            case '3':
+                    printf("\n先序遍历二叉树结果为：");
+                    LRDTree(root,Visit);
+                    printf("\n");
+                    break;
+            case '4':
+                    printf("\n按层遍历二叉树结果为：");
+                    LevelTree(root,Visit);
+                    printf("\n");
+                    break;
+            default:
+                    ;
+        }
+    }
+    while(menusel!='0');
+
+    printf("\n二叉树深度为：%d\n",TreeDepth(root));
+
+    ClearTree(root);
+    root=NULL;
+}
