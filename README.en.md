@@ -20,4 +20,4 @@ back up the files of courses which need Code to be submitted.
 - [x] chapter 2 (experiment 3&4)
 - [x] chapter 3 (experiment 5&6)
 - [x] chapter 4 (experiment 7)
-- [ ] chapter 5 (experiment 8)
+- [x] chapter 5 (experiment 8)
