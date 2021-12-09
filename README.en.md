@@ -12,12 +12,14 @@ back up the files of courses which need Code to be submitted.
 - [x] experiment 6
 - [x] exercise 1
 - [x] experiment 7
-- [x] experiment 8
+- [x] experiment 7\_2
+- [ ] experiment 8
 
 ## numerical calculation
 
-- [x] chapter 1 (experiment 1&2)
-- [x] chapter 2 (experiment 3&4)
-- [x] chapter 3 (experiment 5&6)
-- [x] chapter 4 (experiment 7)
-- [x] chapter 5 (experiment 8)
+- [x] chapter 1 \(experiment 1&2)
+- [x] chapter 2 \(experiment 3&4)
+- [x] chapter 3 \(experiment 5&6)
+- [x] chapter 4 \(experiment 7)
+- [x] chapter 5 \(experiment 8)
+- [ ] chapter 6 \(experiment 9)
