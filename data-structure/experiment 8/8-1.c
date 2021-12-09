@@ -27,6 +27,7 @@ int main() {
     TElemType pre[MAX_NODE];
     TElemType in[MAX_NODE];
     BiTNode root;
+    root.lchild = root.rchild = NULL;
 
     memset(pre, '\0', sizeof(pre));
     memset(in, '\0', sizeof(in));
@@ -70,7 +71,7 @@ int main() {
 
 //中序区间为[in_start, in_end]
 Status constructByPreAndIn(BiTree root, const TElemType *preOrder, int cur, const TElemType *inOrder, int in_start,
-                         int in_end) {
+                           int in_end) {
     //当前前序序列的开始第一个即为当前根结点元素
     root->data = preOrder[cur];
 
