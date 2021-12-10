@@ -277,18 +277,16 @@ void breadthTraverseMap(Mgraph mgraph) {
     while (!Emptyqueue(queue)) {
         Dequeue(&queue, &cur);
         //访问过就不再访问，未访问过就访问
-        if (visited[cur]) {
-            continue;
-        } else {
+        if (!visited[cur]) {
             visited[cur] = TRUE;
             printf("%d ", cur);
-        }
-        for (int i = 0; i < mgraph.vexnum; i++) {
-            //将当前顶点的未访问邻接点入队
-            if (visited[i] == FALSE && (
-                    ((mgraph.kind == DG || mgraph.kind == UDG) && mgraph.arcs[cur][i].adj != 0) ||
-                    ((mgraph.kind == DN || mgraph.kind == UDN) && mgraph.arcs[cur][i].adj != INFINITY))) {
-                Enqueue(&queue, i);
+            for (int i = 0; i < mgraph.vexnum; i++) {
+                //将当前顶点的未访问邻接点入队
+                if (visited[i] == FALSE && (
+                        ((mgraph.kind == DG || mgraph.kind == UDG) && mgraph.arcs[cur][i].adj != 0) ||
+                        ((mgraph.kind == DN || mgraph.kind == UDN) && mgraph.arcs[cur][i].adj != INFINITY))) {
+                    Enqueue(&queue, i);
+                }
             }
         }
         //处理非连通图
