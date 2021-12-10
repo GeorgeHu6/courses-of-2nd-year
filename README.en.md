@@ -13,7 +13,7 @@ back up the files of courses which need Code to be submitted.
 - [x] exercise 1
 - [x] experiment 7
 - [x] experiment 7\_2
-- [ ] experiment 8
+- [x] experiment 8
 
 ## numerical calculation
 
@@ -22,4 +22,4 @@ back up the files of courses which need Code to be submitted.
 - [x] chapter 3 \(experiment 5&6)
 - [x] chapter 4 \(experiment 7)
 - [x] chapter 5 \(experiment 8)
-- [ ] chapter 6 \(experiment 9)
+- [x] chapter 6 \(experiment 9)
