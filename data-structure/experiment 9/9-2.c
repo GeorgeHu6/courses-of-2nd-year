@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 
 typedef int dataType;
@@ -9,28 +10,29 @@ int main() {
     dataType test[10]={'A','C','D','E','J','L','O','a','d','g'};
     int index;
     dataType ch;
-    printf("å¾…æŸ¥æ‰¾å­—ç¬¦åºåˆ—ä¸ºï¼š\n");
+    printf("´ı²éÕÒ×Ö·ûĞòÁĞÎª£º\n");
     for (int i = 0; i < 10; i++)
         printf("%c ", test[i]);
     printf("\n");
 
     while (1) {
-        printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾çš„å­—ç¬¦ï¼ˆå‡å·-ä¸ºé€€å‡ºï¼‰\n");
+        printf("ÇëÊäÈëÒª²éÕÒµÄ×Ö·û£¨¼õºÅ-ÎªÍË³ö£©\n");
         while ((ch = getchar()) && isspace(ch));
         if (ch == '-')
             break;
         index = binarySearch(test, 10, ch);
         if (index == -1)
-            printf("æœªæ‰¾åˆ°\n");
+            printf("Î´ÕÒµ½\n");
         else
-            printf("æ‰¾åˆ°äº†ï¼Œç¬¬ä¸€ä¸ª'%c'çš„ä¸‹æ ‡ä¸º%d\n", ch, index);
+            printf("ÕÒµ½ÁË£¬µÚÒ»¸ö'%c'µÄÏÂ±êÎª%d\n", ch, index);
     }
 
+    system("pause");
     return 0;
 }
 
-//åœ¨éé€’å‡åºåˆ—arrä¸­äºŒåˆ†æŸ¥æ‰¾keywordï¼Œè‹¥åœ¨arrä¸­æ‰¾åˆ°äº†ï¼Œåˆ™è¿”å›ä¸‹æ ‡ï¼›è‹¥æ²¡æ‰¾åˆ°ï¼Œåˆ™è¿”å›-1
-//éœ€è¦ç»™å…¥arrçš„é•¿åº¦n
+//ÔÚ·Çµİ¼õĞòÁĞarrÖĞ¶ş·Ö²éÕÒkeyword£¬ÈôÔÚarrÖĞÕÒµ½ÁË£¬Ôò·µ»ØÏÂ±ê£»ÈôÃ»ÕÒµ½£¬Ôò·µ»Ø-1
+//ĞèÒª¸øÈëarrµÄ³¤¶Èn
 int binarySearch(dataType arr[], int n, dataType keyword) {
     int left=0, right=n-1;
     int mid;

@@ -10,11 +10,11 @@ int main() {
     dataType *test, ch;
     int num;
 
-    printf("è¯·è¾“å…¥è¦æ’åºçš„å…ƒç´ ä¸ªæ•°ï¼š\n");
+    printf("ÇëÊäÈëÒªÅÅĞòµÄÔªËØ¸öÊı£º\n");
     scanf("%d", &num);
     test = (char *) malloc(num*sizeof(char));
 
-    printf("è¯·è¾“å…¥è¦æ’åºçš„å…ƒç´ ï¼ˆä»¥ç©ºæ ¼åˆ†éš”ï¼‰\n");
+    printf("ÇëÊäÈëÒªÅÅĞòµÄ×Ö·ûÔªËØ£¨ÒÔ¿Õ¸ñ·Ö¸ô£©\n");
     
     for (int i = 0; i < num; i++) {
         while((ch = getchar()) && isspace(ch));
@@ -23,38 +23,39 @@ int main() {
 
     quickSort(test, 0, num-1);
 
-    printf("æ’åºç»“æœä¸ºï¼š\n");
+    printf("ÅÅĞò½á¹ûÎª£º\n");
     for (int i = 0; i < num; i++)
         printf("%c ", test[i]);
 
     printf("\n");
+    system("pause");
     return 0;
 }
 
-//äº¤æ¢æ•°ç»„å…ƒç´ çš„å‡½æ•°
+//½»»»Êı×éÔªËØµÄº¯Êı
 void swap(dataType *a, dataType *b) {
     dataType t=*a;
     *a = *b;
     *b = t;
 }
 
-//å¯¹arråºåˆ—çš„[left,right]åŒºé—´è¿›è¡Œå¿«é€Ÿæ’åº
+//¶ÔarrĞòÁĞµÄ[left,right]Çø¼ä½øĞĞ¿ìËÙÅÅĞò
 void quickSort(dataType arr[], int left, int right) {
     int mid=arr[(left+right)/2];
     int l=left, r=right;
     while (l <= r) {
-        //æ‰¾åˆ°ç¬¬ä¸€ä¸ªå¤§äºç­‰äºmidçš„
+        //ÕÒµ½µÚÒ»¸ö´óÓÚµÈÓÚmidµÄ
         while (arr[l] < mid) l++;
-        //æ‰¾åˆ°ç¬¬ä¸€ä¸ªå°äºç­‰äºmidçš„
+        //ÕÒµ½µÚÒ»¸öĞ¡ÓÚµÈÓÚmidµÄ
         while (arr[r] > mid) r--;
-        //å°†ä¸¤ä¸ªå…ƒç´ äº¤æ¢ï¼Œå³åˆ†åˆ«æ”¾å…¥æ¯”midå°/å¤§çš„ä¸¤è¾¹
+        //½«Á½¸öÔªËØ½»»»£¬¼´·Ö±ğ·ÅÈë±ÈmidĞ¡/´óµÄÁ½±ß
         if (l <= r) {
             swap(arr+l, arr+r);
             l++;
             r--;
         }
     }
-    //ç»§ç»­é€’å½’å¿«æ’æ¯ä¸ªåˆ†æ®µ
+    //¼ÌĞøµİ¹é¿ìÅÅÃ¿¸ö·Ö¶Î
     if (left < r) quickSort(arr, left, r);
     if (right > l) quickSort(arr, l, right);
 }
