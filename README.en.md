@@ -15,6 +15,7 @@ back up the files of courses which need Code to be submitted.
 - [x] experiment 7\_2
 - [x] experiment 8
 - [x] experiment 8\_2
+- [ ] experiment 9 \(code completed, paper not done\)
 
 ## numerical calculation
 
@@ -25,3 +26,5 @@ back up the files of courses which need Code to be submitted.
 - [x] chapter 5 \(experiment 8\)
 - [x] chapter 6 \(experiment 9\)
 - [x] chapter 7 \(experiment 10\)
+- [x] chapter 8&9 \(experiment 11\)
+- [x] final test
