@@ -15,7 +15,7 @@ back up the files of courses which need Code to be submitted.
 - [x] experiment 7\_2
 - [x] experiment 8
 - [x] experiment 8\_2
-- [x] experiment 9 \(code completed, paper not done\)
+- [x] experiment 9
 
 ## numerical calculation
 
