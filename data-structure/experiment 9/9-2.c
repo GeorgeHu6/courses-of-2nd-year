@@ -17,6 +17,7 @@ int main() {
 
     while (1) {
         printf("请输入要查找的字符（减号-为退出）\n");
+        //去除空格、换行符
         while ((ch = getchar()) && isspace(ch));
         if (ch == '-')
             break;

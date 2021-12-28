@@ -10,6 +10,7 @@ int main() {
     dataType *test, ch;
     int num;
 
+    //预处理用于存储的空间
     printf("请输入要排序的元素个数：\n");
     scanf("%d", &num);
     test = (char *) malloc(num*sizeof(char));
@@ -17,6 +18,7 @@ int main() {
     printf("请输入要排序的字符元素（以空格分隔）\n");
     
     for (int i = 0; i < num; i++) {
+        //去除空格、换行符
         while((ch = getchar()) && isspace(ch));
         test[i] = ch;
     }
