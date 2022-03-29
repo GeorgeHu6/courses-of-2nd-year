@@ -1,0 +1,8 @@
+CLion+freeglut
+https://www.optgeo.top/?p=78
+
+OpenGL+glfw+glad
+https://www.optgeo.top/?p=60
+
+Microsoft OpenGL文档
+https://docs.microsoft.com/en-us/windows/win32/opengl/opengl-reference

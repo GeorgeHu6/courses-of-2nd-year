@@ -34,7 +34,7 @@
 
 ## 计算机组成原理实验
 
-- [ ] 实验1
+- [x] 实验1
 
 ## 图形学实验
 
@@ -45,6 +45,12 @@
 [CLion+freeglut](https://www.optgeo.top/?p=78)
 
 [CLion+glfw+glad](https://www.optgeo.top/?p=60)
+
+- [x] 实验1
+
+## 数电实验
+
+使用的是Quartus Ⅱ 13.1(64bit)，实验k的报告命名为expk，电路图文件bdf命名为pjkt，波形仿真文件命名为Waveformkt（t为题号，不足2位高位补0）
 
 - [ ] 实验1
 
