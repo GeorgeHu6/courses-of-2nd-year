@@ -51,7 +51,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 168 216 216 232))
+	(annotation_block (location)(rect 232 176 280 192))
 )
 (pin
 	(input)
@@ -68,7 +68,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 168 232 216 248))
+	(annotation_block (location)(rect 216 240 264 256))
 )
 (pin
 	(output)
@@ -180,4 +180,7 @@ applicable agreement for further details.
 	(pt 648 160)
 	(pt 680 160)
 )
-(text "F = A(B+C)" (rect 1080 96 1143 110)(font "Arial" (font_size 8)))
+(text "A" (rect 208 144 217 158)(font "Arial" (font_size 8)))
+(text "B" (rect 192 200 200 214)(font "Arial" (font_size 8)))
+(text "C" (rect 192 216 200 230)(font "Arial" (font_size 8)))
+(text "Y" (rect 872 152 881 166)(font "Arial" (font_size 8)))
