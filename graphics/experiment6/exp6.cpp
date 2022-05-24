@@ -151,8 +151,6 @@ void lineClipBarskey(wcPt2D minCoord, wcPt2D maxCoord, wcPt2D p1, wcPt2D p2) {
             }
         }
     }
-
-
 }
 
 void myDisplay() {
