@@ -185,23 +185,6 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 200 400 232 432)
-	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
-	(text "inst" (rect 3 21 20 33)(font "Arial" )(invisible))
-	(port
-		(pt 16 0)
-		(output)
-		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
-		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
-		(line (pt 16 8)(pt 16 0))
-	)
-	(drawing
-		(line (pt 8 8)(pt 16 16))
-		(line (pt 16 16)(pt 24 8))
-		(line (pt 8 8)(pt 24 8))
-	)
-)
-(symbol
 	(rect 424 280 472 312)
 	(text "NOT" (rect 1 0 21 10)(font "Arial" (font_size 6)))
 	(text "5" (rect 3 21 8 33)(font "Arial" ))
@@ -336,6 +319,23 @@ applicable agreement for further details.
 		(line (pt 16 168)(pt 16 16))
 		(circle (rect 8 132 16 140))
 		(circle (rect 8 20 16 28))
+	)
+)
+(symbol
+	(rect 200 400 232 432)
+	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
+	(text "4" (rect 3 21 8 33)(font "Arial" )(invisible))
+	(port
+		(pt 16 0)
+		(output)
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(line (pt 16 8)(pt 16 0))
+	)
+	(drawing
+		(line (pt 8 8)(pt 16 16))
+		(line (pt 16 16)(pt 24 8))
+		(line (pt 8 8)(pt 24 8))
 	)
 )
 (connector
